@@ -1,6 +1,6 @@
 {
   "name": "practice-interviewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "engines": {
     "node": ">=24.12.0"
@@ -16,6 +16,7 @@
     "test:speech": "node --import tsx --test tests/speech-metrics.test.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "firebase": "13.4.0",
