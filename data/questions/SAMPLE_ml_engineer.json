@@ -1,0 +1,107 @@
+[
+  {
+    "id": "SAMPLE-ml_engineer-data-1",
+    "text": "How do you split data for training and testing?",
+    "topic": "data",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-data-2",
+    "text": "How would you detect and prevent data leakage?",
+    "topic": "data",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-data-3",
+    "text": "How would you validate a model with temporal and group dependencies?",
+    "topic": "data",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-modeling-1",
+    "text": "Explain overfitting and one way to reduce it.",
+    "topic": "modeling",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-modeling-2",
+    "text": "How would you choose between a linear model and a tree ensemble?",
+    "topic": "modeling",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-modeling-3",
+    "text": "How would you investigate underperformance across subpopulations?",
+    "topic": "modeling",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-metrics-1",
+    "text": "Explain precision and recall.",
+    "topic": "metrics",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-metrics-2",
+    "text": "How would you select a metric for a highly imbalanced dataset?",
+    "topic": "metrics",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-metrics-3",
+    "text": "How would you select and monitor decision thresholds when costs change?",
+    "topic": "metrics",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-deployment-1",
+    "text": "What is a model inference endpoint?",
+    "topic": "deployment",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-deployment-2",
+    "text": "How would you roll out a model without disrupting users?",
+    "topic": "deployment",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-deployment-3",
+    "text": "Design a rollback and monitoring plan for model drift.",
+    "topic": "deployment",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-features-1",
+    "text": "What is a feature in machine learning?",
+    "topic": "features",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-features-2",
+    "text": "How would you handle missing and categorical features?",
+    "topic": "features",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-ml_engineer-features-3",
+    "text": "How would you avoid training-serving skew in a feature pipeline?",
+    "topic": "features",
+    "difficulty": 5,
+    "type": "technical"
+  }
+]

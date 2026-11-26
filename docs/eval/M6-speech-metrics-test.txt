@@ -1,0 +1,14 @@
+
+> practice-interviewer@0.1.0 test:speech
+> node --import tsx --test tests/speech-metrics.test.ts
+
+✔ counts fillers and pace (1.766486ms)
+✔ handles zero duration and whitespace (0.126617ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 276.14476

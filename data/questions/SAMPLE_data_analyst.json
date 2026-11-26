@@ -1,0 +1,107 @@
+[
+  {
+    "id": "SAMPLE-data_analyst-sql-1",
+    "text": "Explain the difference between WHERE and HAVING.",
+    "topic": "sql",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-sql-2",
+    "text": "How would you find duplicate customer records using SQL?",
+    "topic": "sql",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-sql-3",
+    "text": "How would you design a query for a rolling retention cohort?",
+    "topic": "sql",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-statistics-1",
+    "text": "What is the difference between mean and median?",
+    "topic": "statistics",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-statistics-2",
+    "text": "How would you interpret a confidence interval?",
+    "topic": "statistics",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-statistics-3",
+    "text": "How would you assess bias and uncertainty in an observational study?",
+    "topic": "statistics",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-visualization-1",
+    "text": "How do you choose a chart for a trend?",
+    "topic": "visualization",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-visualization-2",
+    "text": "How would you communicate a misleading aggregate trend?",
+    "topic": "visualization",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-visualization-3",
+    "text": "Design a dashboard that highlights uncertainty and supports decisions.",
+    "topic": "visualization",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-experiments-1",
+    "text": "What is the purpose of a control group?",
+    "topic": "experiments",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-experiments-2",
+    "text": "How would you interpret an A/B test with unequal group sizes?",
+    "topic": "experiments",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-experiments-3",
+    "text": "How would you address multiple comparisons in a product experiment?",
+    "topic": "experiments",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-data_quality-1",
+    "text": "What checks would you perform on a new dataset?",
+    "topic": "data_quality",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-data_quality-2",
+    "text": "How would you investigate a sudden drop in recorded events?",
+    "topic": "data_quality",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-data_analyst-data_quality-3",
+    "text": "Design an automated data quality monitoring process.",
+    "topic": "data_quality",
+    "difficulty": 5,
+    "type": "technical"
+  }
+]

@@ -1,0 +1,7 @@
+
+Running 3 tests using 1 worker
+
+[1/3] tests/e2e/interview.spec.ts:2:1 › SAMPLE demo: complete three questions
+[2/3] tests/e2e/setup.spec.ts:3:1 › configuration survives page reload with Firebase emulators
+[3/3] tests/e2e/voice-disabled.spec.ts:3:1 › voice unavailable leaves text usable
+  3 passed (5.0s)

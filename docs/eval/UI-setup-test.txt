@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1/1] tests/e2e/setup.spec.ts:3:1 › configuration survives page reload with Firebase emulators
+  1 passed (6.9s)

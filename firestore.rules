@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sessions/{sessionId} {
+      allow read: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid','role','seniority','type','durationMin','jdText','status','startedAt','currentQuestion','turnCount','targetCount','demo'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.role in ['Generative AI Engineer','ML Engineer','Data Analyst','Full-Stack Engineer']
+        && request.resource.data.seniority in ['junior','mid','senior']
+        && request.resource.data.type in ['technical','behavioral','system design','mixed']
+        && request.resource.data.durationMin is int && request.resource.data.durationMin >= 5 && request.resource.data.durationMin <= 60
+        && request.resource.data.jdText is string && request.resource.data.jdText.size() <= 10000
+        && request.resource.data.status in ['created','active','completed','expired','cancelled']
+        && request.resource.data.startedAt is string && request.resource.data.startedAt.size() <= 30;
+      allow update: if request.auth != null
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid','role','seniority','type','durationMin','jdText','status','startedAt','currentQuestion','turnCount','targetCount','demo','overall','subscores','endedAt'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.status in ['created','active','completed','expired','cancelled'];
+      allow delete: if false;
+      match /turns/{turnId} {
+        allow read: if request.auth != null
+          && get(/databases/$(database)/documents/sessions/$(sessionId)).data.uid == request.auth.uid;
+        allow write: if false;
+      }
+    }
+    match /configurations/{configId} {
+      allow read: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid','role','seniority','type','durationMin','jdText','createdAt'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.role in ['Generative AI Engineer','ML Engineer','Data Analyst','Full-Stack Engineer']
+        && request.resource.data.seniority in ['junior','mid','senior']
+        && request.resource.data.type in ['technical','behavioral','system design','mixed']
+        && request.resource.data.durationMin is int && request.resource.data.durationMin >= 5 && request.resource.data.durationMin <= 60
+        && request.resource.data.jdText is string && request.resource.data.jdText.size() <= 10000
+        && request.resource.data.createdAt is string && request.resource.data.createdAt.size() <= 30;
+      allow update: if request.auth != null
+        && resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(['uid','role','seniority','type','durationMin','jdText','createdAt'])
+        && request.resource.data.uid == request.auth.uid;
+      allow delete: if request.auth != null
+        && resource.data.uid == request.auth.uid;
+    }
+    match /rateLimits/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

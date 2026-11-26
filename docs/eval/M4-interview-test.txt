@@ -1,0 +1,5 @@
+
+Running 1 test using 1 worker
+
+[1/1] tests/e2e/interview.spec.ts:2:1 › SAMPLE demo: complete three questions
+  1 passed (5.1s)

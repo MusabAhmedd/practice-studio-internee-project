@@ -1,0 +1,162 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: "24"
+
+jobs:
+  lint-and-typecheck:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run lint
+        run: npm run lint
+      - name: Run format check
+        run: npm run format:check
+      - name: Run TypeScript typecheck
+        run: npx tsc --noEmit
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run engine tests
+        run: npm run test:engine
+      - name: Run rubric tests
+        run: npm run test:rubric
+      - name: Run speech metrics tests
+        run: npm run test:speech
+
+  firebase-rules-tests:
+    name: Firebase Rules Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+      - name: Start Firebase emulators
+        run: |
+          firebase emulators:start --only auth,firestore --project demo-interview-test &
+          sleep 15
+      - name: Run Firebase rules unit tests
+        run: |
+          # TODO: Add Firebase rules unit tests when implemented
+          echo "Firebase rules tests not yet implemented"
+        env:
+          FIRESTORE_EMULATOR_HOST: localhost:8080
+          FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [lint-and-typecheck, unit-tests]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build with emulators
+        run: |
+          NEXT_PUBLIC_USE_EMULATORS=true npm run build
+        env:
+          FIREBASE_PROJECT_ID: demo-interview-test
+          FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
+          FIRESTORE_EMULATOR_HOST: localhost:8080
+
+  e2e-tests:
+    name: E2E Tests (Playwright)
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Start Firebase emulators
+        run: |
+          firebase emulators:start --only auth,firestore --project demo-interview-test &
+          sleep 15
+      - name: Build for emulator testing
+        run: NEXT_PUBLIC_USE_EMULATORS=true npm run build
+        env:
+          FIREBASE_PROJECT_ID: demo-interview-test
+          FIREBASE_AUTH_EMULATOR_HOST: localhost:9099
+          FIRESTORE_EMULATOR_HOST: localhost:8080
+      - name: Start test app
+        run: |
+          DEMO_MODE=true FIREBASE_PROJECT_ID=demo-interview-test \
+          FIREBASE_AUTH_EMULATOR_HOST=127.0.0.1:9099 \
+          FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 \
+          npm run start &
+          sleep 20
+      - name: Run Playwright tests
+        run: npx playwright test tests/e2e --workers=1
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:3000
+
+  deploy-preview:
+    name: Deploy Preview
+    runs-on: ubuntu-latest
+    needs: [build, e2e-tests]
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy to Vercel Preview
+        uses: amondnet/vercel-action@v25
+        if: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != '' }}
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: "--prod=false"
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

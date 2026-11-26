@@ -1,0 +1,20 @@
+
+> practice-interviewer@0.1.0 test:engine
+> node --import tsx --test tests/engine.test.ts
+
+✔ first question has seniority-based difficulty (0.781326ms)
+✔ close has priority when less than 90 seconds or target reached (0.261247ms)
+✔ short answers clarify before score policy (0.104597ms)
+✔ strong answers increase difficulty with a maximum of five (0.53757ms)
+✔ average answers keep difficulty and choose an uncovered topic (0.170762ms)
+✔ weak answers lower difficulty with a minimum of one (0.148209ms)
+✔ question selection never returns an already used ID (0.225059ms)
+✔ every role has at least 15 labelled questions (0.128102ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 312.745183

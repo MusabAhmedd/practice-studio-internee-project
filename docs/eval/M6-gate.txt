@@ -1,0 +1,4 @@
+M6 acceptance gate: NOT PASSED.
+- npm run test:speech: 2 passed, see M6-speech-metrics-test.txt.
+- Emulator browser suite: 3 passed, including voice-unavailable fallback to text; see M6-e2e-tests.txt.
+- Real voice transcription: NOT RUN. No replacement Groq key is configured. The previously shared key was exposed and must be revoked. No conclusion about the correctness of the live transcription implementation is possible.

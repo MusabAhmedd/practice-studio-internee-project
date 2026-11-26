@@ -1,0 +1,107 @@
+[
+  {
+    "id": "SAMPLE-generative_ai-prompting-1",
+    "text": "What makes an instruction to a language model clear and testable?",
+    "topic": "prompting",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-prompting-2",
+    "text": "How would you evaluate prompt changes against a fixed set of examples?",
+    "topic": "prompting",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-prompting-3",
+    "text": "How would you design defenses against prompt injection in retrieved documents?",
+    "topic": "prompting",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-retrieval-1",
+    "text": "Explain retrieval-augmented generation and when you would use it.",
+    "topic": "retrieval",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-retrieval-2",
+    "text": "How would you diagnose a RAG system that retrieves irrelevant passages?",
+    "topic": "retrieval",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-retrieval-3",
+    "text": "Design an evaluation and mitigation strategy for retrieval failures in a large corpus.",
+    "topic": "retrieval",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-evaluation-1",
+    "text": "How would you check whether generated answers are useful?",
+    "topic": "evaluation",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-evaluation-2",
+    "text": "How would you compare two models while controlling for variability?",
+    "topic": "evaluation",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-evaluation-3",
+    "text": "How would you design an evaluation that separates retrieval errors from generation errors?",
+    "topic": "evaluation",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-models-1",
+    "text": "What is a token and why does context length matter?",
+    "topic": "models",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-models-2",
+    "text": "What are tradeoffs between prompt engineering and fine-tuning?",
+    "topic": "models",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-models-3",
+    "text": "How would you choose a model under latency, quality, and cost constraints?",
+    "topic": "models",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-safety-1",
+    "text": "What are common risks of using an LLM with user data?",
+    "topic": "safety",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-safety-2",
+    "text": "How would you limit exposure of sensitive information in an LLM application?",
+    "topic": "safety",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-generative_ai-safety-3",
+    "text": "Describe a layered safety design for a tool-using assistant.",
+    "topic": "safety",
+    "difficulty": 5,
+    "type": "technical"
+  }
+]

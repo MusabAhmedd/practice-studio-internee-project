@@ -1,0 +1,30 @@
+
+> practice-interviewer@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.4.6 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 35ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.9s
+  Running TypeScript ...
+  Finished TypeScript in 2.9s ...
+  Collecting page data using 1 worker ...
+  Generating static pages using 1 worker (0/5) ...
+  Generating static pages using 1 worker (1/5) 
+  Generating static pages using 1 worker (2/5) 
+  Generating static pages using 1 worker (3/5) 
+✓ Generating static pages using 1 worker (5/5) in 374ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /login
+└ ○ /setup
+
+
+○  (Static)  prerendered as static content
+

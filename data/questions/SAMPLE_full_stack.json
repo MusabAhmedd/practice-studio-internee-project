@@ -1,0 +1,107 @@
+[
+  {
+    "id": "SAMPLE-full_stack-frontend-1",
+    "text": "Explain semantic HTML and why it matters.",
+    "topic": "frontend",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-frontend-2",
+    "text": "How would you handle loading and error states in a web form?",
+    "topic": "frontend",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-frontend-3",
+    "text": "How would you improve accessibility and performance in a complex application?",
+    "topic": "frontend",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-backend-1",
+    "text": "What is an API endpoint?",
+    "topic": "backend",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-backend-2",
+    "text": "How would you validate incoming API requests?",
+    "topic": "backend",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-backend-3",
+    "text": "Design an idempotent endpoint for a payment-like operation.",
+    "topic": "backend",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-database-1",
+    "text": "What is the difference between a primary key and an index?",
+    "topic": "database",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-database-2",
+    "text": "How would you troubleshoot a slow database query?",
+    "topic": "database",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-database-3",
+    "text": "How would you design a migration for a high-traffic production database?",
+    "topic": "database",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-security-1",
+    "text": "Why should secrets be kept off the client?",
+    "topic": "security",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-security-2",
+    "text": "How would you protect a web application against cross-site scripting?",
+    "topic": "security",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-security-3",
+    "text": "Design authorization and abuse controls for a multi-tenant API.",
+    "topic": "security",
+    "difficulty": 5,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-operations-1",
+    "text": "What information would you log when an endpoint fails?",
+    "topic": "operations",
+    "difficulty": 1,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-operations-2",
+    "text": "How would you deploy an application with a rollback option?",
+    "topic": "operations",
+    "difficulty": 3,
+    "type": "technical"
+  },
+  {
+    "id": "SAMPLE-full_stack-operations-3",
+    "text": "How would you investigate a production latency regression across services?",
+    "topic": "operations",
+    "difficulty": 5,
+    "type": "technical"
+  }
+]

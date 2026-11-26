@@ -1,0 +1,9 @@
+UI refresh verification (local)
+- npm run lint: passed
+- npm run build: passed (Next.js 16.4.6, Node 24.22.3)
+- npm run test:engine: 8 passed
+- npm run test:rubric: 4 passed
+- Playwright tests/e2e/setup.spec.ts with isolated Firebase emulators: 1 passed (6.9s)
+- Playwright viewport check, home page: desktop 1440px viewport / 1440px document; mobile 390px viewport / 390px document; no horizontal overflow in either.
+
+These checks do not establish full accessibility, real Firebase/Google authentication, AI functionality, or a complete interview flow.
