@@ -1,56 +1,72 @@
 import "server-only";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
+import { GoogleGenerativeAI, SchemaType, Schema } from "@google/generative-ai";
 import { validateWithRetry } from "./rubric";
 import type { Evaluation } from "./schemas";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_CHAT_MODEL = process.env.GEMINI_CHAT_MODEL || "gemini-1.5-flash";
 
-if (!GEMINI_API_KEY) {
-  throw new Error("Gemini API key is not configured");
+let genAI: InstanceType<typeof GoogleGenerativeAI>;
+
+function getGenAI(): InstanceType<typeof GoogleGenerativeAI> {
+  if (!genAI) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error("Gemini API key is not configured");
+    }
+    genAI = new GoogleGenerativeAI(apiKey);
+  }
+  return genAI;
 }
 
-const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+// Schema helper functions
+function numSchema(): Schema {
+  return { type: SchemaType.NUMBER };
+}
 
-const evaluationSchema = {
+function strSchema(): Schema {
+  return { type: SchemaType.STRING };
+}
+
+function arrSchema(items: Schema): Schema {
+  return {
+    type: SchemaType.ARRAY,
+    items,
+  };
+}
+
+const scoreProperties: Record<string, Schema> = {
+  correctness: numSchema(),
+  depth: numSchema(),
+  clarity: numSchema(),
+  structure: numSchema(),
+  relevance: numSchema(),
+};
+
+const evaluationSchema: Schema = {
   type: SchemaType.OBJECT,
   properties: {
     scores: {
       type: SchemaType.OBJECT,
-      properties: {
-        correctness: { type: SchemaType.NUMBER },
-        depth: { type: SchemaType.NUMBER },
-        clarity: { type: SchemaType.NUMBER },
-        structure: { type: SchemaType.NUMBER },
-        relevance: { type: SchemaType.NUMBER },
-      },
-      required: ["correctness", "depth", "clarity", "structure", "relevance"],
+      properties: scoreProperties,
+      required: ["correctness", "depth", "clarity", "structure", "relevance"] as string[],
     },
-    strengths: {
-      type: SchemaType.ARRAY,
-      items: { type: SchemaType.STRING },
-    },
-    weaknesses: {
-      type: SchemaType.ARRAY,
-      items: { type: SchemaType.STRING },
-    },
-    idealOutline: {
-      type: SchemaType.ARRAY,
-      items: { type: SchemaType.STRING },
-    },
-    tip: { type: SchemaType.STRING },
+    strengths: arrSchema(strSchema()),
+    weaknesses: arrSchema(strSchema()),
+    idealOutline: arrSchema(strSchema()),
+    tip: strSchema(),
   },
-  required: ["scores", "strengths", "weaknesses", "idealOutline", "tip"],
+  required: ["scores", "strengths", "weaknesses", "idealOutline", "tip"] as string[],
 };
 
-const followUpSchema = {
+const followUpSchema: Schema = {
   type: SchemaType.OBJECT,
   properties: {
-    question: { type: SchemaType.STRING },
+    question: strSchema(),
   },
-  required: ["question"],
+  required: ["question"] as string[],
 };
 
 export async function evaluateAnswer(
@@ -73,7 +89,7 @@ export async function evaluateAnswer(
   if (jdText) contextParts.push(`Job description context: ${jdText.slice(0, 2000)}`);
   const context = contextParts.length > 0 ? `\n\nContext:\n${contextParts.join("\n")}` : "";
 
-  const model = genAI.getGenerativeModel({
+  const model = getGenAI().getGenerativeModel({
     model: GEMINI_CHAT_MODEL,
     generationConfig: {
       temperature: 0,
@@ -153,7 +169,7 @@ Generate ONE concise follow-up question that:
 
 Return only a JSON object with a "question" field.`;
 
-  const model = genAI.getGenerativeModel({
+  const model = getGenAI().getGenerativeModel({
     model: GEMINI_CHAT_MODEL,
     generationConfig: {
       temperature: 0.3,
@@ -177,8 +193,9 @@ Return only a JSON object with a "question" field.`;
               }),
             },
           ],
-        ],
-      });
+        },
+      ],
+    });
 
     const content = result.response.text();
     const parsed = JSON.parse(content);
