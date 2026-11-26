@@ -99,6 +99,8 @@ export async function evaluateAnswer(
         JSON.stringify({
           event: "evaluation_error",
           latencyMs: Date.now() - started,
+          error: error instanceof Error ? error.message : String(error),
+          cause: error instanceof Error ? error.cause : undefined,
         }),
       );
       throw error;
